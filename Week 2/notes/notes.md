@@ -6,7 +6,7 @@ NodeJS is Javascript outside of (and without) a browser. To install NPM and Node
 
 ## NPM
 
-NPM is the NodeJS package manager. To install a new package, you use the command
+NPM is the NodeJS package manager. To install a new package, you use the command:
 
 ```sh
 npm install package-name
@@ -47,3 +47,5 @@ app.get('/', function (req, res) {
  
 app.listen(3000)
 ```
+
+This will start Express running at http://localhost:3000/
