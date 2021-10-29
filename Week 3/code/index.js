@@ -5,7 +5,7 @@ const port = 3000
 // You can require your own code as well...
 const funcs = require('./src/funcs.js')
 
-// Tell Express to server HTML, JS, CSS etc from the public/ folder
+// Tell Express to serve HTML, JS, CSS etc from the public/ folder
 // See: http://expressjs.com/en/starter/static-files.html
 app.use(express.static('public'))
 
