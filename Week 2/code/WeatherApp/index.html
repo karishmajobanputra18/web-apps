@@ -17,7 +17,7 @@
 			padding: 10px;
 		}
 
-		form {
+		form, .container {
 			max-width: 50%;
 			margin: 20px auto;
 			padding: 10px;
@@ -34,18 +34,22 @@
 		<input type="submit" value="Submit"/>
 	</form>
 
-	<!-- src will be filled in by JS on API response -->
-	<img src="">
-	<!-- Container for displaying weather results -->
-	<div id="weatherDisplay"></div>
+	<div class="container">
+		<!-- src will be filled in by JS on API response -->
+		<img id="weatherIcon" src="">
+		<!-- Container for displaying weather results -->
+		<div id="weatherDisplay">
+		</div>
+	</div>
 </body>
 
 <script type="text/javascript">
 	// Use fetch to call the weather API
 	function callApi(location) {
 		let url="https://api.weatherapi.com/v1/current.json?key=486f2797dd9e4dc38b984548211110&q=" + location
-
-		return fetch(url).then(response => response.json());
+		return fetch(url).then(
+			response => response.json()
+		);
 	}
 
 	// Get the DOM elements we need to work with
@@ -62,11 +66,20 @@
 		let location = data.get("location");
 
 		callApi(location).then((response) => {
-			// Use console.log to check we have correct fields inside the response
-			// console.log(response);
-			// console.log(response.current.temp_c);
-			// https://developer.mozilla.org/en-US/docs/Web/API/Element/insertAdjacentHTML
-			// TODO: Use response to display some HTML in #weather div
+			// Get the div we'll be outputting to
+			let output = document.getElementById("weatherDisplay");
+
+			// Clear previous data
+			output.innerHTML = "";
+
+			// Insert new HTML
+			output.insertAdjacentHTML('beforeend', `
+				<h3>${response.current.condition.text}</h3>
+				<p>${response.current.temp_c}&#176;C</p>
+			`);
+
+			// Set the icon from the API
+			document.getElementById("weatherIcon").src = "https://" + response.current.condition.icon;
 		});
 	});
 </script>
