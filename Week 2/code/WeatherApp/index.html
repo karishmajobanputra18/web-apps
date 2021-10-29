@@ -59,6 +59,7 @@
 
 	// Add submit event listener
 	form.addEventListener("submit", (event) => {
+		// Stop form from submitting 'normally'
 		event.preventDefault();
 		
 		// Get location so we can send it to the API
@@ -66,20 +67,24 @@
 		let location = data.get("location");
 
 		callApi(location).then((response) => {
-			// Get the div we'll be outputting to
+			// Get the element we'll be outputting to
 			let output = document.getElementById("weatherDisplay");
 
-			// Clear previous data
+			// Clear previous contents
 			output.innerHTML = "";
 
-			// Insert new HTML
+			// Insert some new HTML based on the API response
+			// The HTML entity code "&#176;" is the degree symbol, more info:
+			// 		https://unicode-table.com/en/search/?q=degree
 			output.insertAdjacentHTML('beforeend', `
 				<h3>${response.current.condition.text}</h3>
 				<p>${response.current.temp_c}&#176;C</p>
 			`);
 
-			// Set the icon from the API
-			document.getElementById("weatherIcon").src = "https://" + response.current.condition.icon;
+			// Set the icon from the API. We need to add https: to the front as we're probably
+			// running from file:// - the icon won't load from there... (the icon location already
+			// includes '//' at the start)
+			document.getElementById("weatherIcon").src = "https:" + response.current.condition.icon;
 		});
 	});
 </script>

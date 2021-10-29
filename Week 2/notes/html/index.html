@@ -542,6 +542,38 @@ app.listen(3000)</code></pre></div>
 
 <p>This will start Express running at http://localhost:3000/</p>
 
+<h2 id="toc_4">Element.insertAdjacentHTML</h2>
+
+<p>Use this to insert HTML into an existing DOM element</p>
+
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals">https://developer.mozilla.org/en-US/docs/Web/API/Element/insertAdjacentHTML</a></p>
+
+<h2 id="toc_5">Template strings / string interpolation</h2>
+
+<p>The latest version of Javascript supports string subsitutions (called <a href="https://en.wikipedia.org/wiki/String_interpolation#JavaScript">string interpolation</a> in most other languages):</p>
+
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals</a></p>
+
+<p>Example:</p>
+
+<div><pre class="line-numbers"><code class="language-javascript">// ES6
+let string = &quot;world!&quot;;
+console.log(`Hello, ${string}`);</code></pre></div>
+
+<p>The old way...</p>
+
+<div><pre class="line-numbers"><code class="language-javascript">// ES5
+let string = &quot;world!&quot;;
+console.log(&quot;Hello, &quot; + string);</code></pre></div>
+
+<p>You can also create multi-line strings (useful for putting HTML strings together):</p>
+
+<div><pre class="line-numbers"><code class="language-javascript">// Example from the Week 2 Weather App code
+output.insertAdjacentHTML(&#39;beforeend&#39;, `
+    &lt;h3&gt;${response.current.condition.text}&lt;/h3&gt;
+    &lt;p&gt;${response.current.temp_c}&amp;#176;C&lt;/p&gt;
+`);</code></pre></div>
+
 
 
 <script type="text/javascript">
