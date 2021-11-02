@@ -11,7 +11,7 @@ fetch(url)
 
 // ... is equivalent to this ES5 version ...
 
-fetch(url).then(function(repsonse) {
+fetch(url).then(function(response) {
 	return response.json();
 })
 .then(function(data) {
@@ -45,7 +45,7 @@ Arrow functions are part of ES6 (the latest version of Javascript) and allow you
 
 ## Promises
 
-A promise represents the eventual completion or failure of an asynchronous operation (for example, a call to an API via `fetch`).
+A promise represents the *eventual* completion or failure of an asynchronous operation (for example, a call to an API via `fetch`).
 
 [https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises
 ](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises)
