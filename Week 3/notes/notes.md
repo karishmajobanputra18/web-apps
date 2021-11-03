@@ -102,7 +102,10 @@ When making a POST request, we need to send the data in the request body. We can
 function apiPostRequest(url, data) {
     let options = {
         method: "POST",
-        body: data
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
     }
 
     return fetch(url, options).then(
